@@ -1,20 +1,6 @@
-import { GeoJSONSource, Map, Marker, Popup } from "mapbox-gl";
+import { Map, Marker } from "mapbox-gl";
 import create from "zustand";
-import { makeRadius } from "../utils";
-
-interface MapState {
-    userLocation: [number, number] | null;
-    isMapReady: boolean;
-    map?: Map;
-    markers: Marker[] | [];
-    markerUser: Marker;
-    reload: boolean;
-    setRealod: (reload: boolean) => void;
-    setMap: (map: Map) => void;
-    setMarkers: (markers: Marker[]) => void;
-    setUserLocation: (userLocation: [number, number]) => void;
-    backToMyLocation: (userLocation: [number, number], radius: number) => void;
-}
+import { MapState } from "../interfaces";
 
 
 export const mapStore = create<MapState>((set, get) => ({

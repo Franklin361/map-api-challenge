@@ -1,12 +1,12 @@
 import {HiOutlineLocationMarker} from 'react-icons/hi'
-import { mapStore, filterStore } from '../../stores'
+import { useMapStore, useFilterStore } from '../../hooks';
 import { getUserLocation } from '../../utils'
-
 import style from './style.module.css'
 
 export const MyLocationBtn = () => {
-    const backToMyLocation = mapStore(state => state.backToMyLocation)
-    const radius = filterStore(state => state.radius)
+
+    const { backToMyLocation } = useMapStore();
+    const { radius } = useFilterStore();
     
     const handleGoToLocation = async() => {
         let lnglat: [number, number] | null;

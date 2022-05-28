@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
 
-import { mapStore } from '../stores';
 import { getUserLocation } from '../utils';
+import { useMapStore } from './stores/useMapStore';
 
 
 export const useUserLocation = () => {
 
-    const setUserLocation = mapStore(state => state.setUserLocation);
+    const { setUserLocation } = useMapStore();
 
     const [existLocation, setexistUserLocation] = useState({
         loading: true,

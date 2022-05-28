@@ -1,34 +1,22 @@
-import shallow from 'zustand/shallow';
 import { useEffect, useLayoutEffect, useRef } from 'react';
 import { Map, Popup, Marker, GeoJSONSource, LngLatBounds, AnySourceData } from 'mapbox-gl';
 import { Feature } from '../interfaces';
-import { filterStore, mapStore } from '../stores';
 import { getFeaturesFiltered, makeRadius } from '../utils';
+import { useMapStore, useFilterStore } from './';
 
 const token = import.meta.env.VITE_APP_TOKEN_MAPBOX as string;
 
-type TupleNumber = [number, number];
-
-const layerIDs = {
-    'search-radius': 'search-radius',
-    'results-search': 'results-search'
-}
-
 export const useMapInit = () => {
-    const {
+    const { 
         map, userLocation, markerUser,reload, 
         setMap, setMarkers, setUserLocation,setRealod
+    } = useMapStore();
 
-    } = mapStore(({ setMap, map, setMarkers, userLocation, setUserLocation, markerUser, reload, setRealod }) => (
-        { setMap, map, setMarkers, userLocation, setUserLocation, markerUser, reload, setRealod }
-    ), shallow);
-
-
-    const { filter, radius } = filterStore(({ filter, radius }) => ({ filter, radius }), shallow)
+    const { filter, radius } = useFilterStore()
 
     const mapDiv = useRef<HTMLDivElement>(null);
 
-    const createMarkerOnMap = (lngLatArray: TupleNumber) => {
+    const createMarkerOnMap = (lngLatArray: [number, number]) => {
         if (!map) return;
 
         markerUser.remove();
@@ -62,10 +50,10 @@ export const useMapInit = () => {
     const createLayerForDrawRadius = async() => {
         if (!map) return;
 
-        if(!map.getLayer(layerIDs['search-radius'])){
+        if(!map.getLayer('search-radius')){
             map.addLayer({
-                id: layerIDs['search-radius'],
-                source: {
+                id: 'search-radius',
+               source: {
                     type: 'geojson',
                     data: { "type": "FeatureCollection", "features": [] }
                 },
@@ -80,7 +68,7 @@ export const useMapInit = () => {
         
         const searchRadius = makeRadius(userLocation!, radius); //esto nos trae las cordenadas
         createMarkerOnMap(userLocation!);
-        (map.getSource(layerIDs['search-radius']) as GeoJSONSource).setData(searchRadius);
+        (map.getSource('search-radius') as GeoJSONSource).setData(searchRadius);
         const features = await getFeaturesFiltered({ lngLat: userLocation!, searchRadius, search: filter}); // get places into circle
 
         generateNewMarkes(features, userLocation!);
@@ -205,7 +193,7 @@ export const useMapInit = () => {
         
         const searchRadius = makeRadius([lng, lat], radius); // get coordenates
 
-        (map!.getSource(layerIDs['search-radius']) as GeoJSONSource).setData(searchRadius); // show circle radius
+        (map!.getSource('search-radius') as GeoJSONSource).setData(searchRadius); // show circle radius
         
         const features = await getFeaturesFiltered({ lngLat: [lng, lat], searchRadius, search: filter}); // get places into circle
 
@@ -219,7 +207,6 @@ export const useMapInit = () => {
 
     // OnLoad map
     useEffect(() => {
-        
 
         if(reload){
             createLayerForDrawRadius()
@@ -243,27 +230,26 @@ export const useMapInit = () => {
         }
     }, [map, radius, filter])
 
+
     const changeRadius = async () => {
         if (!map) return;
         if (!userLocation) return;
-        if(!map.getSource(layerIDs['search-radius'])) return;
+        if(!map.getSource('search-radius')) return;
         
         deletePolylineOfMap();
         
         const searchRadius = makeRadius(userLocation, radius); // get coordenates
 
-        (map.getSource(layerIDs['search-radius']) as GeoJSONSource).setData(searchRadius); // show circle radius
+        (map.getSource('search-radius') as GeoJSONSource).setData(searchRadius); // show circle radius
         console.log('cambia radio-search')
         const features = await getFeaturesFiltered({ lngLat: userLocation, searchRadius, search: filter }); // get places into circle
 
         generateNewMarkes(features, userLocation);
     }
-
+    //Change radius or POI 
     useEffect(() => {
         changeRadius();
     }, [radius, filter])
-
-
 
     return mapDiv
 }

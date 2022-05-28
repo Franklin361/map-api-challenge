@@ -7,8 +7,6 @@ interface FormState {
     radius: number
 }
 
-
-
 const opt: { [K in FilterOpts]: FilterOpts; } = {
     alcohol: 'alcohol',
     park: 'park',
@@ -29,7 +27,6 @@ export const useform = () => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const name = e.target.name;
         const value = name === 'search' ? e.target.id : +e.target.value
-        console.log({ value })
         setForm(prev => ({
             ...prev,
             [name]: value
