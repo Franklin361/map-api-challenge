@@ -9,14 +9,20 @@
     "test": "jest --verbose --silent --detectOpenHandles --watch"
   },
   "dependencies": {
+    "@lottiefiles/react-lottie-player": "^3.4.7",
+    "@turf/turf": "^6.5.0",
+    "mapbox-gl": "^2.8.2",
     "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react-dom": "^17.0.0",
+    "react-icons": "^4.3.1",
+    "zustand": "^4.0.0-rc.1"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.0.2",
+    "@types/mapbox-gl": "^2.7.2",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@vitejs/plugin-react": "^1.0.0",
