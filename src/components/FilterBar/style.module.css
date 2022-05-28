@@ -1,0 +1,237 @@
+.containerFilter {
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+    min-height: 500px;
+    padding: 1em 1em 1em 1em;
+    background: #232730;
+    transform: translateY(70%);
+    text-align: center;
+    transition: all .5s ease-in-out;
+}
+
+.showCompleteBar {
+    /* min-height: 300px; */
+    transform: translateY(0);
+}
+
+.draggable {
+    width: 100%;
+    background-color: #232730;
+    cursor: pointer;
+    position: absolute;
+    top: -35px;
+    left: 0;
+    min-height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.377);
+    font-size: 2em;
+}
+
+.contentAside {
+    overflow-y: scroll;
+    height: 250px;
+    scrollbar-width: thin;
+    scrollbar-color: slateblue #232730;
+    padding: 1em;
+}
+
+.contentAside::-webkit-scrollbar {
+    width: 3px;
+}
+
+.contentAside::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.contentAside::-webkit-scrollbar-thumb {
+    background-color: slateblue;
+    border-radius: 20px;
+}
+
+.title {
+    font-size: 2em;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.descAside {
+    margin: 1em 0 0 0;
+}
+
+.separator {
+    border: 1px solid rgba(255, 255, 255, 0.712);
+    border-radius: 50px;
+    margin: 2em 0;
+}
+
+.subtitle {
+    font-size: 1.5em;
+}
+
+.containerButtons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5em;
+    margin: 1.5em auto;
+    padding: 1em;
+}
+
+.containerButtons>div {
+    width: 100%;
+}
+
+.radio {
+    display: none;
+}
+
+.radio:checked~.item {
+    background-color: slateblue;
+    color: white;
+    pointer-events: none;
+}
+
+.item {
+    background-color: transparent;
+    width: 100%;
+    cursor: pointer;
+    padding: .7em 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    font-size: 1.2em;
+    border: 2px solid rgba(255, 255, 255, 0.712);
+    transition: .1s linear;
+}
+
+.item:hover {
+    border-color: slateblue;
+    color: slateblue;
+}
+
+.item>.icon_item {
+    font-size: 1.3em;
+}
+
+.rangeContent {
+    margin-top: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.number {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.377);
+    font-family: 'Montserrat', sans-serif;
+}
+
+.range {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 15rem;
+    cursor: pointer;
+    /* transform: scale(1.7); */
+}
+
+.range::-webkit-slider-runnable-track {
+    background: rgba(255, 255, 255, 0.712);
+    height: 0.3rem;
+    border-radius: 50px;
+}
+
+.range::-moz-range-track {
+    background: rgba(255, 255, 255, 0.712);
+    height: 0.3rem;
+    border-radius: 50px;
+}
+
+.range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    margin-top: -10px;
+    background-color: slateblue;
+    border: 1px solid white;
+    height: 25px;
+    border-radius: 100%;
+    width: 25px;
+}
+
+.range::-moz-range-thumb {
+    border: none;
+    border-radius: 50%;
+    background-color: slateblue;
+    border: 1px solid white;
+    height: 20px;
+    width: 20px;
+}
+
+@media screen and (min-width: 900px) {
+    .containerFilter {
+        padding: 2em 1em;
+        top: 0;
+        right: 0;
+        width: 400px;
+        min-height: auto;
+        transform: translateX(0);
+    }
+
+    .showCompleteBar {
+        transform: translateX(400px);
+    }
+
+    .draggable {
+        width: 40px;
+        min-height: 100vh;
+        top: 0;
+        left: -40px;
+    }
+
+    .icon {
+        transform: rotate(90deg);
+    }
+
+    .contentAside {
+        height: 60vh;
+        padding: 0 1em;
+    }
+
+    .rangeContent {
+        gap: 1em;
+    }
+
+    .range {
+        width: 15rem;
+        transform: scale(1);
+    }
+
+    .range::-webkit-slider-runnable-track,
+    .range::-moz-range-track {
+        height: 10px;
+    }
+
+    .range::-webkit-slider-thumb,
+    .range::-moz-range-thumb {
+        height: 30px;
+        width: 30px;
+    }
+}
+
+@media screen  and (max-width: 375px){
+    .item{
+        flex-direction:column;
+        gap: .5em;
+    }
+}
