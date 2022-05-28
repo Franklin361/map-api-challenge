@@ -1,96 +1,29 @@
-# Show Modal Dialogs 💬
+# Find Your Place 🌎
 
-Este proyecto consta de mostrar modales de dialogo basado en componentes de React JS.
+This project consists of locating different points of interest depending on the configuration you make in the filter and tracing the route from the central point to the point you want to go to. Example: search for restaurants within a radius of 10 km from my current location.
 
-![image](https://res.cloudinary.com/dnxchppfm/image/upload/v1653078455/2022-05-20_15-19-34_krxmqy.gif)
+![image](https://res.cloudinary.com/dnxchppfm/image/upload/v1653698006/findyourplace.gif)
 
-## API/Component
+## Features
+1. Show full screen map.
+2. Show your current location on the map (with consent).
+3. Button to return to your current location
+4. Show the configured points of interest, only if they are within the configured radius.
+5. Change your location by double clicking on the map where you want to search for points of interest.
+6. Trace the route from the user's location to the selected point of interest by clicking on the marker.
+7. When clicking on a marker, display a pop up with the name of the point of interest location.
+8. Filter bar to modify the point of interest to be searched and the kilometers of the radius in which you want to do the search.
+9. Show and hide filter bar.
 
-HomePage/index.tsx
 
-```javascript
-<main>
-    <div className="container-btns">
-        {
-            buttons.map( ({ icon, label }) => (
-                <ButtonDialog
-                    key={icon}
-                    onClick={() => handleOpenModal(icon)}
-                    label={label}
-                    icon={icon}
-                />
-            ))
-        }
-    </div>
+## Tecnologies
 
-    {
-        isOpenModal && <ModalDialog {...{ handleCloseModal, isOpenModal, type }} />
-    }
-</main>
-```
-
-En el componente HomePage contiene los botones para desplegar los modales de dialogo.\
-El arreglo de "buttons" consiste en varios objetos con la como el siguiente:
-
- ```javascript
-    const buttons: Pick<PropsButton, 'icon' | 'label'>[] = [
-        {
-            icon: 'warning',
-            label: 'Warning Dialog'
-        },
-        {
-            icon: 'error',
-            label: 'Error Dialog'
-        },
-        {
-            icon: 'success',
-            label: 'Success Dialog'
-        }
-    ]
- ```
-Y para cada botón, hay un modal que se idenfica mediante el valor de la propiedad "icono" de la constante "buttons".
-
----
-components/ModalDialog/Modal.tsx
-```javascript
-export const Modal = (props: PropsModal) => {
-
-    const { isOpenModal, handleCloseModal } = props;
-
-    return (
-        <dialog 
-            open={isOpenModal} 
-            className='modal-overlay' 
-            onClick={handleCloseModal}
-        >
-            <div 
-                className='modal-container' 
-                onClick={handleStopPropagation}
-            >
-                { showModalDetails(props) }
-                
-                <ButtonCloseModal handleCloseModal={handleCloseModal} />
-            </div>
-        </dialog>
-    )
-}
-
-```
-
----
-utils/showModalDetails.tsx
-```javascript
-export const showModalDetails = (props: PropsModal) => {
-
-    const selectedModal = {
-        "warning": <WarningModal {...props} />,
-        "success": <SuccessModal {...props} />,
-        "error": <ErrorModal {...props} />
-    }
-
-    return selectedModal[props.type!]
-}
-```
+- React JS
+- TypeScript
+- Zustand
+- MapBox APIs
+- CSS Modules
+- Vite JS
 
 
 ## Installation
@@ -119,7 +52,7 @@ Note: For running the tests, use the following command
 ```
 
 ## Demo
-[Demo de la aplicación](https://show-modal-dialogs.netlify.app/)
+[Demo de la aplicación](https://find-your-place.netlify.app)
 
 ## License 
 
