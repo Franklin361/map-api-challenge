@@ -1,0 +1,1 @@
+export type FilterOpts = 'alcohol' | 'restaurant' | 'park'

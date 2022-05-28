@@ -1,0 +1,20 @@
+.btn {
+    /* all: unset; */
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    width: 70px;
+    height: 70px;
+    background: #232730;
+    border-radius: 100%;
+    border: 2px solid rgba(255, 255, 255, 0.692);
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon {
+    color: white;
+    font-size: 2em;
+}
