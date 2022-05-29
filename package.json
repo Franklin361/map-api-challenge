@@ -1,36 +1,30 @@
 {
-  "name": "quick-vitejs-react-typescript-jest",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "serve": "vite preview",
-    "test": "jest --verbose --silent --detectOpenHandles --watch"
+    "serve": "vite preview"
   },
   "dependencies": {
-    "@lottiefiles/react-lottie-player": "^3.4.7",
-    "@turf/turf": "^6.5.0",
-    "mapbox-gl": "^2.8.2",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
-    "react-icons": "^4.3.1",
-    "zustand": "^4.0.0-rc.1"
+    "@lottiefiles/react-lottie-player": "3.4.7",
+    "@turf/turf": "6.5.0",
+    "mapbox-gl": "2.8.2",
+    "react": "17.0.0",
+    "react-dom": "17.0.0",
+    "react-icons": "4.3.1",
+    "sass": "^1.52.1",
+    "sweetalert2": "^11.4.17",
+    "sweetalert2-react-content": "^4.2.0",
+    "zustand": "4.0.0-rc.1"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.0.2",
-    "@types/mapbox-gl": "^2.7.2",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "@vitejs/plugin-react": "^1.0.0",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^27.3.1",
-    "ts-jest": "^27.0.7",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.3.2",
-    "vite": "^2.6.4"
+    "@types/mapbox-gl": "2.7.2",
+    "@types/react": "17.0.0",
+    "@types/react-dom": "17.0.0",
+    "@vitejs/plugin-react": "1.0.0",
+    "ts-node": "10.4.0",
+    "typescript": "4.3.2",
+    "vite": "2.7.1"
   }
 }

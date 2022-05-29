@@ -8,7 +8,7 @@ This project consists of locating different points of interest depending on the 
 1. Show full screen map.
 2. Show your current location on the map (with consent).
 3. Button to return to your current location
-4. Show the configured points of interest, only if they are within the configured radius.
+4. Show the configured points of interest, only if they are within the configured radius (max. 10 places).
 5. Change your location by double clicking on the map where you want to search for points of interest.
 6. Trace the route from the user's location to the selected point of interest by clicking on the marker.
 7. When clicking on a marker, display a pop up with the name of the point of interest location.
