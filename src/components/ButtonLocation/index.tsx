@@ -13,9 +13,8 @@ export const MyLocationBtn = () => {
 
         lnglat = JSON.parse(sessionStorage.getItem('original-location')!);
 
-        if(!lnglat) { lnglat = await getUserLocation(); console.log('buscando locacion API...')}
-
-        console.log(lnglat)
+        if(!lnglat) { lnglat = await getUserLocation(); }
+        
         backToMyLocation(lnglat, radius)
     }
 

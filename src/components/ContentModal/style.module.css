@@ -1,0 +1,23 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+.video{
+    width: 200px;
+    height: 200px;
+}
+.msg {
+    display: block;
+    margin: 0;
+    font-size: 1.4em;
+}
+.msg > span {
+    font-family: 'Montserrat', sans-serif;
+    color: slateblue;
+    text-decoration: underline;
+}
+.title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+}
