@@ -1,13 +1,12 @@
 import * as turf from '@turf/turf'
 import { MapBoxResponse, FilterOpts } from '../interfaces';
+import { token } from "./";
 
 interface Props {
     lngLat: [number, number];
     searchRadius: turf.helpers.Feature<turf.helpers.Polygon, turf.helpers.Properties>;
     search: FilterOpts
 }
-
-const token = import.meta.env.VITE_APP_TOKEN_MAPBOX as string;
 
 export const getFeaturesFiltered = async ({ lngLat: [lng, lat], searchRadius, search }: Props) => {
     
