@@ -2,7 +2,7 @@
 
 This project consists of locating different points of interest depending on the configuration you make in the filter and tracing the route from the central point to the point you want to go to. Example: search for restaurants within a radius of 10 km from my current location.
 
-![image](https://res.cloudinary.com/dnxchppfm/image/upload/v1653698006/findyourplace.gif)
+![image](https://res.cloudinary.com/dnxchppfm/image/upload/v1660873820/franklin-page/routes-radio_keh5td.png)
 
 ## Features
 1. Show full screen map.
